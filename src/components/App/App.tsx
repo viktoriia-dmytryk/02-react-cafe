@@ -29,12 +29,23 @@ function App() {
   return (
     <div className={css.app}>
       <CafeInfo />
-      
-      <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={totalVotes > 0 } />
-      {totalVotes ? <VoteStats votes={votes} totalVotes={ totalVotes} positiveRate={totalVotes
-    ? Math.round((votes.good / totalVotes) * 100 )
-        : 0} /> : <Notification />}
-      
+
+      <VoteOptions
+        onVote={handleVote}
+        onReset={resetVotes}
+        canReset={totalVotes > 0}
+      />
+      {totalVotes ? (
+        <VoteStats
+          votes={votes}
+          totalVotes={totalVotes}
+          positiveRate={
+            totalVotes ? Math.round((votes.good / totalVotes) * 100) : 0
+          }
+        />
+      ) : (
+        <Notification />
+      )}
     </div>
   );
 }
